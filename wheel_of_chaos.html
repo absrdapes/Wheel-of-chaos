@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel of Chaos</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            flex-direction: column;
+        }
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid white;
+            transition: transform 4s ease-out;
+        }
+        .spin-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎡 Wheel of Chaos 🎡</h1>
+    <div class="wheel-container">
+        <img id="wheel" class="wheel" src="YOUR_SPINNING_WHEEL_IMAGE_URL" alt="Wheel of Chaos">
+    </div>
+    <button class="spin-button" onclick="spinWheel()">Spin the Wheel</button>
+    <p id="result"></p>
+    
+    <script>
+        function spinWheel() {
+            let wheel = document.getElementById("wheel");
+            let resultText = document.getElementById("result");
+            let randomDegree = Math.floor(Math.random() * 3600) + 360; // Ensuring multiple spins
+            
+            wheel.style.transform = `rotate(${randomDegree}deg)`;
+            setTimeout(() => {
+                const outcomes = [
+                    "Blessing of the Absurd - Win X $ABSRD Tokens!",
+                    "NFT of Madness - Win a random NFT!",
+                    "Jungle Fortune - Earn a special Discord role!",
+                    "Double or Nothing - Risk another spin!",
+                    "Banana Curse - Username changed to 'Cursed Ape' for 24 hours!",
+                    "Muted by the AI Gods - Muted for 10 minutes!",
+                    "Wheel Glitch - Lose half leaderboard points!",
+                    "Spam Mode Activated - Banana emotes flood your messages!"
+                ];
+                let selectedOutcome = outcomes[Math.floor(Math.random() * outcomes.length)];
+                resultText.textContent = `🎰 Result: ${selectedOutcome}`;
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
